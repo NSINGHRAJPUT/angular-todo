@@ -1,0 +1,36 @@
+<div class="container mx-auto mt-8">
+  <h1 class="text-3xl font-bold mb-4">TO DO List</h1>
+  <div class="mb-4">
+    <input
+      [(ngModel)]="newTask"
+      placeholder="Add a new task"
+      class="w-full p-2 border border-gray-300 rounded"
+    />
+    <button
+      (click)="addTodo()"
+      class="ml-2 px-4 py-2 bg-blue-500 text-white rounded"
+    >
+      Add
+    </button>
+  </div>
+
+  <ul class="list-none">
+    <li *ngFor="let todo of todos" class="flex items-center mb-2 border-b">
+      <input
+        type="checkbox"
+        [(ngModel)]="todo.completed"
+        (change)="toggleComplete(todo)"
+        class="mr-2"
+      />
+      <span [class.line-through]="todo.completed" class="flex-1 text-lg">
+        {{ todo.task }}
+      </span>
+      <button
+        (click)="deleteTodo(todo.id)"
+        class="bg-red-500 text-white px-2 py-1 rounded"
+      >
+        Delete
+      </button>
+    </li>
+  </ul>
+</div>
